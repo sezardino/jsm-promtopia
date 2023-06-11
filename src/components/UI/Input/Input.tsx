@@ -1,7 +1,7 @@
 import { type ComponentPropsWithoutRef, type FC } from "react";
 
 import { cn } from "@/utils/cn";
-import styles from "./Input.module.scss";
+import styles from "./Input.module.css";
 
 export interface InputProps extends ComponentPropsWithoutRef<"input"> {}
 

@@ -1,7 +1,7 @@
 import { type ComponentPropsWithoutRef, type FC } from "react";
 
 import { cn } from "@/utils/cn";
-import styles from "./Textarea.module.scss";
+import styles from "./Textarea.module.css";
 
 export interface TextareaProps extends ComponentPropsWithoutRef<"textarea"> {}
 

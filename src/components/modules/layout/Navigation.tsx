@@ -1,5 +1,6 @@
 "use client";
 
+import { ProjectUrls } from "@/const/project-urls";
 import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,7 +43,7 @@ export const Navigation: FC<NavigationProps> = (props) => {
 
   return (
     <nav {...rest} className="flex-between w-full mb-16 pt-3">
-      <Link href="/" className="flex gap-2 flex-center">
+      <Link href={ProjectUrls.home} className="flex gap-2 flex-center">
         <Image
           src="/images/logo.svg"
           alt="logo"
@@ -57,13 +58,11 @@ export const Navigation: FC<NavigationProps> = (props) => {
       <div className="sm:flex hidden">
         {isUserLogged ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-prompt" className="black_btn">
-              Create Post
-            </Link>
+            <Button href={ProjectUrls.createPrompt} text="Create Prompt" />
 
             <Button variant="outline" onClick={signOut} text="Sign Out" />
 
-            <Link href="/profile">
+            <Link href={ProjectUrls.profile}>
               <Image
                 src={session.user.image}
                 width={37}
@@ -103,14 +102,14 @@ export const Navigation: FC<NavigationProps> = (props) => {
             {isMenuOpen && (
               <div className="dropdown">
                 <Link
-                  href="/profile"
+                  href={ProjectUrls.profile}
                   className="dropdown_link"
                   onClick={closeMenu}
                 >
                   My Profile
                 </Link>
                 <Link
-                  href="/create-prompt"
+                  href={ProjectUrls.createPrompt}
                   className="dropdown_link"
                   onClick={closeMenu}
                 >

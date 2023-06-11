@@ -26,9 +26,7 @@ export const Button: FC<ButtonProps> = (props) => {
     ...rest
   } = props;
 
-  const variantClass =
-    variant === "black" ? styles["black"] : styles["outline"];
-  const classNames = cn(variantClass, className);
+  const classNames = cn(styles[variant], className);
 
   if (href && href.startsWith("http")) {
     return (

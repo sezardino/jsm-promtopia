@@ -2,7 +2,7 @@ import { useId, type FC } from "react";
 
 import { Input, InputProps, Textarea, TextareaProps } from "@/components";
 import { cn } from "@/utils/cn";
-import styles from "./FormField.module.scss";
+import styles from "./FormField.module.css";
 
 interface InputFormFieldProps extends InputProps {
   variant?: "input";

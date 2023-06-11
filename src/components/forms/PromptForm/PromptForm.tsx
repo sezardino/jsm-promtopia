@@ -59,6 +59,7 @@ export const PromptForm: FC<PromptFormProps> = (props) => {
 
           <Button
             type="submit"
+            variant="orange"
             disabled={form.isSubmitting}
             text={form.isSubmitting ? `${type}ing...` : type}
           />
