@@ -1,4 +1,10 @@
-import { Schema, model, models } from "mongoose";
+import { Model, Schema, model, models } from "mongoose";
+
+export interface UserEntity {
+  email: string;
+  name: string;
+  image: string;
+}
 
 export const UserSchema = new Schema({
   email: {
@@ -18,5 +24,5 @@ export const UserSchema = new Schema({
 
 const USER_MODEL_NAME = "User";
 
-export const UserModel =
+export const UserModel: Model<UserEntity> =
   models[USER_MODEL_NAME] || model(USER_MODEL_NAME, UserSchema);
