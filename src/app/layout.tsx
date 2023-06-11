@@ -1,6 +1,7 @@
-import { Navigation, Provider } from "@/components";
+import { Navigation } from "@/components";
 import "@/styles/index.css";
 import { PropsWithChildren } from "react";
+import { Provider } from "./providers";
 
 export const metadata = {
   title: "Promptopia",
