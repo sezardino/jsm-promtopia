@@ -1,3 +1,4 @@
+import { Navigation } from "@/components";
 import "@/styles/index.css";
 import { PropsWithChildren } from "react";
 
@@ -14,7 +15,11 @@ const RootLayout = ({ children }: PropsWithChildren) => {
           <div className="gradient" />
         </div>
 
-        <main className="app">{children}</main>
+        <main className="app">
+          <Navigation />
+
+          {children}
+        </main>
       </body>
     </html>
   );

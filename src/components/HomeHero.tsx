@@ -10,7 +10,7 @@ export const HomeHero: FC<HomeHeroProps> = (props) => {
       <h1 className="head_text text-center">
         Discover
         <br className="max-md:hidden" />
-        <span className="orange-gradient text-center">AI-prompts</span>
+        <span className="orange-gradient text-center"> AI-prompts</span>
       </h1>
       <p className="text-center">A collection of prompts to share</p>
     </section>
