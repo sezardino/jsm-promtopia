@@ -1,3 +1,5 @@
+export * from "./models";
+
 import mongoose from "mongoose";
 
 let isMongoConnected = false;
