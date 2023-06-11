@@ -1,9 +1,10 @@
-import { type ComponentPropsWithoutRef, type FC } from "react";
+"use client";
 
-export interface ProviderProps extends ComponentPropsWithoutRef<"div"> {}
+import { SessionProvider } from "next-auth/react";
+import { PropsWithChildren } from "react";
 
-export const Provider: FC<ProviderProps> = (props) => {
-  const { className, ...rest } = props;
+export const Provider = (props: PropsWithChildren) => {
+  const { children } = props;
 
-  return <div {...rest}></div>;
+  return <SessionProvider>{children}</SessionProvider>;
 };

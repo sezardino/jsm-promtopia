@@ -1,4 +1,4 @@
-import { Navigation } from "@/components";
+import { Navigation, Provider } from "@/components";
 import "@/styles/index.css";
 import { PropsWithChildren } from "react";
 
@@ -10,17 +10,19 @@ export const metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
-      <body>
-        <div className="main">
-          <div className="gradient" />
-        </div>
+      <Provider>
+        <body>
+          <div className="main">
+            <div className="gradient" />
+          </div>
 
-        <main className="app">
-          <Navigation />
+          <main className="app">
+            <Navigation />
 
-          {children}
-        </main>
-      </body>
+            {children}
+          </main>
+        </body>
+      </Provider>
     </html>
   );
 };

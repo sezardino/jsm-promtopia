@@ -1,6 +1,6 @@
 "use client";
 
-import { getProviders, signIn, signOut } from "next-auth/react";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -15,6 +15,7 @@ export interface NavigationProps extends ComponentPropsWithoutRef<"div"> {}
 
 export const Navigation: FC<NavigationProps> = (props) => {
   const { className, ...rest } = props;
+  const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -23,9 +24,6 @@ export const Navigation: FC<NavigationProps> = (props) => {
     signOut();
     closeMenu();
   };
-
-  // TODO: delete
-  const isUserLogged = true;
 
   const [providers, setProviders] = useState<Awaited<
     ReturnType<typeof getProviders>
@@ -39,6 +37,8 @@ export const Navigation: FC<NavigationProps> = (props) => {
 
     fetchProviders();
   }, []);
+
+  const isUserLogged = !!session?.user;
 
   return (
     <nav {...rest} className="flex-between w-full mb-16 pt-3">
@@ -65,7 +65,7 @@ export const Navigation: FC<NavigationProps> = (props) => {
 
             <Link href="/profile">
               <Image
-                src={"/images/logo.svg"}
+                src={session.user.image}
                 width={37}
                 height={37}
                 className="rounded-full"
@@ -92,7 +92,7 @@ export const Navigation: FC<NavigationProps> = (props) => {
           <div className="flex">
             <button onClick={toggleMenu}>
               <Image
-                src={"images/logo.svg"}
+                src={session.user.image}
                 width={37}
                 height={37}
                 className="rounded-full"
