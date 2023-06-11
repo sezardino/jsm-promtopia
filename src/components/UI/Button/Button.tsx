@@ -2,10 +2,13 @@ import { cn } from "@/utils/cn";
 import Link from "next/link";
 import { type FC } from "react";
 
+import styles from "./Button.module.css";
+
 export interface ButtonProps {
   type?: "button" | "submit" | "reset";
-  variant?: "outline" | "black";
+  variant?: "outline" | "black" | "orange";
   onClick?: () => void;
+  disabled?: boolean;
   href?: string;
   isBlank?: boolean;
   text: string;
@@ -23,7 +26,8 @@ export const Button: FC<ButtonProps> = (props) => {
     ...rest
   } = props;
 
-  const variantClass = variant === "black" ? "black_btn" : "outline_btn";
+  const variantClass =
+    variant === "black" ? styles["black"] : styles["outline"];
   const classNames = cn(variantClass, className);
 
   if (href && href.startsWith("http")) {

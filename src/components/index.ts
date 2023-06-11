@@ -1,3 +1,2 @@
-export * from "./HomeHero";
-export * from "./Navigation";
-export * from "./Provider";
+export * from "./UI";
+export * from "./modules";

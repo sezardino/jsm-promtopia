@@ -9,7 +9,7 @@ import {
   type ComponentPropsWithoutRef,
   type FC,
 } from "react";
-import { Button } from "./UI";
+import { Button } from "../../UI";
 
 export interface NavigationProps extends ComponentPropsWithoutRef<"div"> {}
 
