@@ -1,2 +1,2 @@
 export * from "./PromptCard";
-export * from "./PromptForm/PromptForm";
+export * from "./PromptFormWrapper/PromptFormWrapper";
