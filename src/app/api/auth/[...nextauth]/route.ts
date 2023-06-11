@@ -1,4 +1,5 @@
-import { UserModel, connectToMongo } from "@/libs/mongoose";
+import { connectToMongo } from "@/libs/mongoose";
+import { userService } from "@/libs/mongoose/services";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -17,10 +18,13 @@ export const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-      const sessionUser = await UserModel.findOne({
-        email: session.user.email,
+      const sessionUser = await userService.get({
+        email: session.user.email as string,
       });
-      session.user.id = sessionUser?._id.toString();
+
+      if (!sessionUser) return session;
+
+      session.user.id = sessionUser._id.toString()!;
 
       return session;
     },
@@ -30,10 +34,12 @@ export const handler = NextAuth({
       try {
         await connectToMongo();
 
-        const isUserExist = await UserModel.exists({ email: profile.email });
+        const isUserExist = await userService.isExist({ email: profile.email });
+
+        if (!profile.email || !profile.image || !profile.name) return false;
 
         if (!isUserExist) {
-          await UserModel.create({
+          await userService.create({
             email: profile.email,
             name: profile.name,
             image: profile.picture,

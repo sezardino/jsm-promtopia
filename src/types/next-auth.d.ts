@@ -7,6 +7,12 @@ declare module "next-auth" {
     picture: string;
   }
 
+  interface Session extends Profile {
+    user: Profile & {
+      id: string;
+    };
+  }
+
   interface Session {
     user: {
       id: string;
