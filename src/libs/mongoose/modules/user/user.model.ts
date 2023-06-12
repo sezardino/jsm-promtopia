@@ -1,11 +1,5 @@
+import { UserEntity } from "@/types";
 import { Model, Schema, model, models } from "mongoose";
-
-export interface UserEntity {
-  _id: string;
-  email: string;
-  name: string;
-  image: string;
-}
 
 export const UserSchema = new Schema({
   email: {

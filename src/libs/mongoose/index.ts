@@ -1,4 +1,4 @@
-export * from "./models";
+export * from "./modules";
 
 import mongoose from "mongoose";
 

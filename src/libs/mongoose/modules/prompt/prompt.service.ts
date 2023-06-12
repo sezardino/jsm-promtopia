@@ -1,7 +1,5 @@
-export * from "./input";
-
-import { PromptModel } from "../../models/prompt";
-import { CreatePromptInput } from "./input";
+import { CreatePromptInput } from "@/types";
+import { PromptModel } from "./prompt.model";
 
 class PromptService {
   async create(input: CreatePromptInput) {

@@ -1,7 +1,5 @@
-export * from "./input";
-
-import { UserModel } from "../../models";
-import { CreateUserInput, UserInput } from "./input";
+import { CreateUserInput, UserInput } from "@/types";
+import { UserModel } from "./user.model";
 
 class UserService {
   async create(input: CreateUserInput) {

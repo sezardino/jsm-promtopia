@@ -1,5 +1,4 @@
-import { connectToMongo } from "@/libs/mongoose";
-import { userService } from "@/libs/mongoose/services";
+import { connectToMongo, userService } from "@/libs/mongoose";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 

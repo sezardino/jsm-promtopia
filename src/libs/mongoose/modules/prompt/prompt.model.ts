@@ -1,11 +1,5 @@
+import { PromptEntity } from "@/types";
 import { Model, Schema, model, models } from "mongoose";
-
-export interface PromptEntity {
-  _id: string;
-  creator: string;
-  body: string;
-  tag: string;
-}
 
 export const PromptSchema = new Schema({
   creator: {

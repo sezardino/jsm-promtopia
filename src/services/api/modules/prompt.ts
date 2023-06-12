@@ -1,4 +1,4 @@
-import { PromptEntity } from "@/libs/mongoose/models/prompt";
+import { PromptEntity } from "@/libs/mongoose/modules/prompt/prompt.model";
 import { CreatePromptInput } from "@/libs/mongoose/services";
 import { AbstractApiModule } from "./_abstract";
 

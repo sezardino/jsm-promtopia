@@ -1,5 +1,5 @@
-import { connectToMongo } from "@/libs/mongoose";
-import { CreatePromptInput, promptService } from "@/libs/mongoose/services";
+import { connectToMongo, promptService } from "@/libs/mongoose";
+import { CreatePromptInput } from "@/types";
 import { NextRequest } from "next/server";
 
 export const POST = async (req: NextRequest) => {
