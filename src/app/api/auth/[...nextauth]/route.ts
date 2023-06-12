@@ -35,8 +35,7 @@ export const handler = NextAuth({
         await connectToMongo();
 
         const isUserExist = await userService.isExist({ email: profile.email });
-
-        if (!profile.email || !profile.image || !profile.name) return false;
+        if (!profile.email || !profile.picture || !profile.name) return false;
 
         if (!isUserExist) {
           await userService.create({
