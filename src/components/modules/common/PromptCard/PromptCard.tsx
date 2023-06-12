@@ -58,22 +58,24 @@ export const PromptCard: FC<PromptCardProps> = (props) => {
       <p className="my-4 font-satoshi text-sm text-gray-700">{body}</p>
       <p className="font-inter text-sm blue_gradient cursor-pointer">#{tag}</p>
 
-      {/* {isUserOwner && pathName === "/profile" && ( */}
-      <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
-        <p
-          className="font-inter text-sm green_gradient cursor-pointer"
-          // onClick={handleEdit}
-        >
-          Edit
-        </p>
-        <p
-          className="font-inter text-sm orange_gradient cursor-pointer"
-          // onClick={handleDelete}
-        >
-          Delete
-        </p>
-      </div>
-      {/* )} */}
+      {isUserOwner && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+          <button
+            type="button"
+            className="font-inter text-sm green_gradient cursor-pointer"
+            // TODO: add edit functionality
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            className="font-inter text-sm orange_gradient cursor-pointer"
+            //  TODO: add delete functionality
+          >
+            Delete
+          </button>
+        </div>
+      )}
     </div>
   );
 };

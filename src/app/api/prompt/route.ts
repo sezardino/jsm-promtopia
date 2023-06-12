@@ -3,7 +3,16 @@ import { PromptInput } from "@/types";
 import { NextRequest } from "next/server";
 
 export const GET = async (req: NextRequest) => {
-  const input = new URL(req.url).searchParams as PromptInput;
+  const params = new URL(req.url).searchParams;
+
+  const input: PromptInput = {
+    creator: params.get("creator") || undefined,
+    search: params.get("search") || undefined,
+    tag: params.get("tag") || undefined,
+    page: parseInt(params.get("page") || "") || undefined,
+    limit: parseInt(params.get("limit") || "") || undefined,
+  };
+
   try {
     connectToMongo();
 

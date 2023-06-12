@@ -6,6 +6,6 @@ export const PROMPTS_QUERY_KEY = "prompts";
 
 export const usePromptsQuery = (input?: PromptInput) =>
   useQuery({
-    queryKey: [PROMPTS_QUERY_KEY],
+    queryKey: [PROMPTS_QUERY_KEY, { ...input }],
     queryFn: () => apiService.prompt.getMany(input),
   });

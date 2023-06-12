@@ -16,8 +16,10 @@ class PromptService {
 
     const findQuery: FilterQuery<PromptEntity> = {
       ...(creator && { creator }),
-      ...(search && { body: searchQuery, tag: searchQuery }),
-      ...(tag && { tag: { $regex: tag, $options: "i" } }),
+      ...(search && {
+        $or: [{ body: searchQuery }, { tag: searchQuery }],
+      }),
+      ...(tag && { tag }),
     };
 
     const totalCount = await PromptModel.countDocuments(findQuery);
