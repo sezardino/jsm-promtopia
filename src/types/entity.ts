@@ -11,3 +11,11 @@ export interface UserEntity {
   name: string;
   image: string;
 }
+
+export interface PromptInput {
+  search?: string;
+  tag?: string;
+  creator?: string;
+  page?: number;
+  limit?: number;
+}
