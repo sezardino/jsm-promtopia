@@ -1,6 +1,7 @@
 import { Model, Schema, model, models } from "mongoose";
 
 export interface PromptEntity {
+  _id: string;
   creator: string;
   body: string;
   tag: string;

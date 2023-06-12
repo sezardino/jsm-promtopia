@@ -1,15 +1,25 @@
-import { PromptForm } from "@/components/forms/PromptForm/PromptForm";
+import {
+  PromptForm,
+  PromptFormValues,
+} from "@/components/forms/PromptForm/PromptForm";
 import { cn } from "@/utils/cn";
 import { type ComponentPropsWithoutRef, type FC } from "react";
 
 export interface PromptFormWrapperProps
   extends ComponentPropsWithoutRef<"div"> {
   type: "create" | "edit";
-  onFormSubmit: () => void;
+  isLoading: boolean;
+  onFormSubmit: (values: PromptFormValues) => Promise<void>;
 }
 
 export const PromptFormWrapper: FC<PromptFormWrapperProps> = (props) => {
-  const { type = "create", onFormSubmit, className, ...rest } = props;
+  const {
+    type = "create",
+    isLoading,
+    onFormSubmit,
+    className,
+    ...rest
+  } = props;
 
   return (
     <section
@@ -24,7 +34,11 @@ export const PromptFormWrapper: FC<PromptFormWrapperProps> = (props) => {
         imagination run wild with any AI-powered platform
       </p>
 
-      <PromptForm type={type} onFormSubmit={onFormSubmit} />
+      <PromptForm
+        type={type}
+        isLoading={isLoading}
+        onFormSubmit={onFormSubmit}
+      />
     </section>
   );
 };

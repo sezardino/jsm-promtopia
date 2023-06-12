@@ -11,19 +11,26 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 
 export interface PromptFormValues {
   body: string;
-  tags: string;
+  tag: string;
 }
 
 export interface PromptFormProps extends ComponentPropsWithoutRef<"form"> {
   type: "create" | "edit";
-  onFormSubmit: () => void;
+  isLoading: boolean;
+  onFormSubmit: (values: PromptFormValues) => void;
 }
 
 export const PromptForm: FC<PromptFormProps> = (props) => {
-  const { type = "create", onFormSubmit, className, ...rest } = props;
+  const {
+    type = "create",
+    isLoading,
+    onFormSubmit,
+    className,
+    ...rest
+  } = props;
 
   const form = useFormik<PromptFormValues>({
-    initialValues: { body: "", tags: "" },
+    initialValues: { body: "", tag: "" },
     validationSchema: toFormikValidationSchema(z.object({})),
     onSubmit: onFormSubmit,
   });
@@ -60,8 +67,8 @@ export const PromptForm: FC<PromptFormProps> = (props) => {
           <Button
             type="submit"
             variant="orange"
-            disabled={form.isSubmitting}
-            text={form.isSubmitting ? `${type}ing...` : type}
+            disabled={isLoading}
+            text={isLoading ? `${type}ing...` : type}
           />
         </div>
       </Form>
