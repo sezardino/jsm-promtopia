@@ -1,9 +1,11 @@
 import { PromptEntity } from "@/types";
 import { Model, Schema, model, models } from "mongoose";
+import { USER_MODEL_NAME } from "../user/user.model";
 
 export const PromptSchema = new Schema({
   creator: {
     type: Schema.Types.ObjectId,
+    ref: USER_MODEL_NAME,
     required: [true, "Creator is required"],
   },
   body: {

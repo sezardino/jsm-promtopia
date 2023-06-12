@@ -1,8 +1,10 @@
+import axios, { AxiosRequestConfig } from "axios";
+
 export abstract class AbstractApiModule {
   protected async fetcher<Response>(
     url: string,
-    options?: any
+    options?: AxiosRequestConfig
   ): Promise<Response> {
-    return fetch(url, options).then((res) => res.json());
+    return axios(url, options).then((res) => res.data);
   }
 }

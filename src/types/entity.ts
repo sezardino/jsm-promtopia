@@ -5,6 +5,11 @@ export interface PromptEntity {
   tag: string;
 }
 
+export interface PromptWithPopulatedCreator
+  extends Omit<PromptEntity, "creator"> {
+  creator: UserEntity;
+}
+
 export interface UserEntity {
   _id: string;
   email: string;

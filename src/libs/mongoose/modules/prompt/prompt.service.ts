@@ -28,13 +28,12 @@ class PromptService {
     );
 
     const prompts = await PromptModel.find(findQuery)
+      .populate("creator")
       .sort({ createdAt: -1 })
       .limit(limit)
       .skip(skip);
 
-    return new Response(JSON.stringify(getEntitiesResponse(prompts, meta)), {
-      status: 200,
-    });
+    return getEntitiesResponse(prompts, meta);
   }
 }
 

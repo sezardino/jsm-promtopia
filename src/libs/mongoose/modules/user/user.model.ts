@@ -17,7 +17,7 @@ export const UserSchema = new Schema({
   },
 });
 
-const USER_MODEL_NAME = "User";
+export const USER_MODEL_NAME = "User";
 
 export const UserModel: Model<UserEntity> =
   models[USER_MODEL_NAME] || model(USER_MODEL_NAME, UserSchema);
