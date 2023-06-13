@@ -35,7 +35,7 @@ export const SearchForm: FC<SearchFormProps> = (props) => {
     >
       <input
         type="text"
-        placeholder="Search for a tag or a username"
+        placeholder="Search for a tag or a prompt"
         value={value}
         onChange={(evt) => setValue(evt.target.value)}
         className={styles.input}

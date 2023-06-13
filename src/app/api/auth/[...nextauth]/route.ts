@@ -2,12 +2,6 @@ import { connectToMongo, userService } from "@/libs/mongoose";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
-interface Profile {
-  email: string;
-  name: string;
-  picture: string;
-}
-
 export const handler = NextAuth({
   providers: [
     GoogleProvider({

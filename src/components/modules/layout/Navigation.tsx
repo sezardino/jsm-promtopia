@@ -62,9 +62,9 @@ export const Navigation: FC<NavigationProps> = (props) => {
 
             <Button variant="outline" onClick={signOut} text="Sign Out" />
 
-            <Link href={ProjectUrls.profile}>
+            <Link href={ProjectUrls.myProfile}>
               <Image
-                src={session.user.image}
+                src={session.user.image!}
                 width={37}
                 height={37}
                 className="rounded-full"
@@ -91,7 +91,7 @@ export const Navigation: FC<NavigationProps> = (props) => {
           <div className="flex">
             <button onClick={toggleMenu}>
               <Image
-                src={session.user.image}
+                src={session.user.image!}
                 width={37}
                 height={37}
                 className="rounded-full"
@@ -102,7 +102,7 @@ export const Navigation: FC<NavigationProps> = (props) => {
             {isMenuOpen && (
               <div className="dropdown">
                 <Link
-                  href={ProjectUrls.profile}
+                  href={ProjectUrls.myProfile}
                   className="dropdown_link"
                   onClick={closeMenu}
                 >

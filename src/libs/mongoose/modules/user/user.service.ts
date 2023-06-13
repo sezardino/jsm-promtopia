@@ -1,4 +1,5 @@
-import { CreateUserInput, UserInput } from "@/types";
+import { CreateUserInput, UserEntity, UserInput } from "@/types";
+import { FilterQuery } from "mongoose";
 import { UserModel } from "./user.model";
 
 class UserService {
@@ -8,7 +9,16 @@ class UserService {
   }
 
   async get(input: UserInput) {
-    return UserModel.findOne(input);
+    const { email, id } = input;
+
+    if (!email && !id) return null;
+
+    const findQuery: FilterQuery<UserEntity> = {
+      ...(email && { email }),
+      ...(id && { _id: id }),
+    };
+
+    return UserModel.findOne(findQuery);
   }
 
   async isExist(input: UserInput) {

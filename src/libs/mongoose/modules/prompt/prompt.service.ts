@@ -10,12 +10,12 @@ class PromptService {
   }
 
   async getMany(input: PromptInput) {
-    const { creator, search, tag } = input;
+    const { creatorId, search, tag } = input;
 
     const searchQuery = { $regex: search, $options: "i" };
 
     const findQuery: FilterQuery<PromptEntity> = {
-      ...(creator && { creator }),
+      ...(creatorId && { creator: creatorId }),
       ...(search && {
         $or: [{ body: searchQuery }, { tag: searchQuery }],
       }),

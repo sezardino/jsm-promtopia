@@ -20,7 +20,12 @@ export interface UserEntity {
 export interface PromptInput {
   search?: string;
   tag?: string;
-  creator?: string;
+  creatorId?: string;
   page?: number;
   limit?: number;
+}
+
+export interface UserInput {
+  id?: string;
+  email?: string;
 }

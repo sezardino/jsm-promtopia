@@ -4,18 +4,36 @@ import { UserEntity } from "@/types";
 import Image from "next/image";
 import { useState, type ComponentPropsWithoutRef, type FC } from "react";
 
+import { ProjectUrls } from "@/const/project-urls";
 import { cn } from "@/utils/cn";
+import Link from "next/link";
+import { ProfileData } from "../ProfileData/ProfileData";
 import styles from "./PromptCard.module.css";
 
 export interface PromptCardProps extends ComponentPropsWithoutRef<"div"> {
-  isUserOwner: boolean;
+  isUserOwner?: boolean;
+  onDeleteClick?: () => void;
+  onTagClick?: () => void;
   creator: UserEntity;
   body: string;
   tag: string;
+  id: string;
+  showUserCredentials?: boolean;
 }
 
 export const PromptCard: FC<PromptCardProps> = (props) => {
-  const { isUserOwner, body, creator, tag, className, ...rest } = props;
+  const {
+    showUserCredentials = false,
+    isUserOwner = false,
+    onDeleteClick,
+    onTagClick,
+    body,
+    creator,
+    tag,
+    id,
+    className,
+    ...rest
+  } = props;
 
   const [copied, setCopied] = useState("");
 
@@ -28,22 +46,13 @@ export const PromptCard: FC<PromptCardProps> = (props) => {
   return (
     <div {...rest} className={cn(styles.element, className)}>
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
-          <Image
-            src={creator.image}
-            alt="user_image"
-            width={40}
-            height={40}
-            className="rounded-full object-contain"
-          />
-
-          <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900">
-              {creator.name}
-            </h3>
-            <p className="font-inter text-sm text-gray-500">{creator.email}</p>
-          </div>
-        </div>
+        <ProfileData
+          email={creator.email}
+          image={creator.image}
+          name={creator.name}
+          id={creator._id}
+          withLinks={showUserCredentials}
+        />
 
         <div className="copy_btn" onClick={handleCopy}>
           <Image
@@ -56,24 +65,33 @@ export const PromptCard: FC<PromptCardProps> = (props) => {
       </div>
 
       <p className="my-4 font-satoshi text-sm text-gray-700">{body}</p>
-      <p className="font-inter text-sm blue_gradient cursor-pointer">#{tag}</p>
+      <p
+        className={cn(
+          "font-inter text-sm blue_gradient",
+          onTagClick && "hover:underline cursor-pointer"
+        )}
+        onClick={onTagClick}
+      >
+        #{tag}
+      </p>
 
       {isUserOwner && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
-          <button
-            type="button"
+          <Link
+            href={ProjectUrls.editPrompt + id}
             className="font-inter text-sm green_gradient cursor-pointer"
-            // TODO: add edit functionality
           >
             Edit
-          </button>
-          <button
-            type="button"
-            className="font-inter text-sm orange_gradient cursor-pointer"
-            //  TODO: add delete functionality
-          >
-            Delete
-          </button>
+          </Link>
+          {onDeleteClick && (
+            <button
+              type="button"
+              className="font-inter text-sm orange_gradient cursor-pointer"
+              onClick={onDeleteClick}
+            >
+              Delete
+            </button>
+          )}
         </div>
       )}
     </div>

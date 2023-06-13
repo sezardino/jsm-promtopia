@@ -8,4 +8,5 @@ export const usePromptsQuery = (input?: PromptInput) =>
   useQuery({
     queryKey: [PROMPTS_QUERY_KEY, { ...input }],
     queryFn: () => apiService.prompt.getMany(input),
+    enabled: input?.creatorId !== undefined ? !!input.creatorId : undefined,
   });

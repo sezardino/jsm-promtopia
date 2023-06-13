@@ -1,5 +1,7 @@
 export const ProjectUrls = Object.freeze({
   home: "/",
   createPrompt: "/create-prompt",
-  profile: "/profile",
+  myProfile: "/profile",
+  profile: "/profile/", // + id,
+  editPrompt: "/edit-prompt?id=", // + id,
 });
